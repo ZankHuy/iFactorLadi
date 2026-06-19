@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Fira+Code:wght@400;500&display=swap');
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  --theme-bg: #f4f0e8;                    /* Pearl White */
+  --theme-card-bg: #ffffff;               /* Clean white card */
+  --theme-text-primary: #333333;           /* Charcoal */
+  --theme-text-secondary: #4a4a4a;         /* Muted deep gray */
+  --theme-text-muted: #6e6a62;             /* Warm dark gray */
+  --theme-text-light: #8e8980;             /* Warm light gray */
+  --theme-border-color: #dcd3c4;           /* Sand White */
+  --theme-border-light: #e9e3d8;           /* Subtle Sand White */
+  --theme-subtle-bg: #efebe2;              /* Soft transition */
+}
+
+html.dark {
+  --theme-bg: #110b0a;                    /* Deep obsidian burgundy */
+  --theme-card-bg: #1a1210;                /* Luxury dark element background */
+  --theme-text-primary: #f4f0e8;           /* Pearl White text */
+  --theme-text-secondary: #dcd3c4;         /* Sand White text */
+  --theme-text-muted: #b1a696;             /* Warm golden-gray text */
+  --theme-text-light: #8e8170;             /* Muted warm-gray text */
+  --theme-border-color: #3d2a23;           /* Warm deep bronze border */
+  --theme-border-light: #2c1e19;           /* Subtle dark-bronze border */
+  --theme-subtle-bg: #1e1412;              /* Warm dark inner box */
+}
+
+@theme {
+  --font-sans: "Montserrat", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-mono: "Fira Code", monospace;
+  
+  /* IFactor Academy Brand Guidelines colors */
+  --color-ifactor-red: #8b0e13;            /* Crimson Velvet */
+  --color-ifactor-red-dark: #7e1c1c;       /* Burgundy Red */
+  --color-ifactor-yellow: #d4b06a;        /* Gold Sand */
+  --color-ifactor-yellow-dark: #bca05d;
+  --color-ifactor-teal: #7e1c1c;           /* Replaced Teal with Burgundy for brand matching */
+  --color-ifactor-teal-dark: #581010;
+  --color-ifactor-purple: #8b0e13;
+  
+  /* Red override maps to standardise bright-red down to luxurious Crimson / Burgundy */
+  --color-red-50: #fdf5f5;
+  --color-red-100: #fae6e7;
+  --color-red-200: #f5cfd1;
+  --color-red-300: #eda9ad;
+  --color-red-400: #e0777e;
+  --color-red-500: #8b0e13;
+  --color-red-600: #8b0e13;                /* Main Crimson Velvet */
+  --color-red-700: #7e1c1c;                /* Burgundy Red */
+  --color-red-800: #691416;
+  --color-red-900: #541113;
+  --color-red-950: #2d0506;
+
+  /* Gold/Yellow Override maps to standardise bright yellow down to Sand Gold */
+  --color-yellow-50: #fefbf4;
+  --color-yellow-100: #fcf4e5;
+  --color-yellow-250: #f8e5c1;
+  --color-yellow-300: #f3d49b;
+  --color-yellow-400: #e9ba6c;
+  --color-yellow-500: #d4b06a;             /* Gold Sand */
+  --color-yellow-600: #c29f59;
+  --color-yellow-750: #a58544;
+  --color-yellow-800: #8c6e35;
+  --color-yellow-900: #6e5526;
+  
+  /* Dynamic mappings for instant seamless dark / light theme */
+  --color-ifactor-cream: var(--theme-bg);
+  --color-ifactor-dark: var(--theme-card-bg);
+  --color-pivot-dark: var(--theme-text-primary);
+
+  /* Seamless Backward Compatibility mapping to standardize all components at once */
+  --color-pivot-teal: #7e1c1c;
+  --color-pivot-teal-dark: #581010;
+  --color-pivot-teal-deep: #2d0506;
+  --color-pivot-peach: #d4b06a; 
+  --color-pivot-peach-light: #fefbf4;
+  --color-pivot-cream: var(--theme-bg);
+  --color-pivot-dark-backup: #333333;
+  
+  --color-red-650: #8b0e13;
+  --color-red-505: #8b0e13;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Custom scrollbar for premium touch */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f4f0e8;
+}
+::-webkit-scrollbar-thumb {
+  background: #8b0e13;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #7e1c1c;
+}

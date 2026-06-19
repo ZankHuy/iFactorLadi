@@ -1,0 +1,8 @@
+{
+  "name": "Pivot Real Estate Training",
+  "description": "Premium landing page for Tom Ferry\u0027s Pivot Real Estate Agent Training with customized pricing packages.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
