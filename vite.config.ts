@@ -1,10 +1,19 @@
+import { defineConfig, loadEnv } from 'vite';
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
 
-export default defineConfig(() => {
+// Base path for the deployed site.
+// On GitHub Pages, this is "/<repo-name>/". Override with VITE_BASE env var
+// when the repo is renamed or you switch to a custom domain.
+const DEFAULT_REPO_BASE = '/iFactorLadi/';
+
+export default defineConfig(({ mode, command }) => {
+  const env = loadEnv(mode, process.cwd(), '');
+  const base = env.VITE_BASE || (command === 'build' ? DEFAULT_REPO_BASE : '/');
+
   return {
+    base,
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
@@ -12,11 +21,13 @@ export default defineConfig(() => {
       },
     },
     server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
       hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
       watch: process.env.DISABLE_HMR === 'true' ? null : {},
+    },
+    build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      sourcemap: false,
     },
   };
 });
